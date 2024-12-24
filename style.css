@@ -63,6 +63,30 @@ h1, p {
     width: 15rem;
 }
 
+.head-section ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    line-height: 30px;
+    margin: 0 auto;
+    padding: 0;
+    width: 120px;
+}
+
+.header-section li {
+    display: flex;
+}
+
+.head-section a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.head-section a:hover {
+    opacity: 50%;
+}
+
 footer {
     padding: 1rem;
     color: white;
