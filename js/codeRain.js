@@ -53,13 +53,22 @@ function getRandomChar(){
 
 // Set layout
 function layout(){
-    console.log("Layout")
     width = window.innerWidth;
     height = window.innerHeight;
     cvs.width = width;
     cvs.height = height;
+
+    old_columnNum = columnNum;
     columnNum = Math.floor(width / columnWidth);
-    nextChars = new Array(columnNum).fill(0); // Reset nextChars array
+
+    if (columnNum > old_columnNum){
+        columnHeight = Math.floor(height / fontSize);
+        columnTextNum = Math.floor(Math.random() * columnHeight);
+        extendedNextChars = Array.from({length: columnNum - old_columnNum}, () => Math.floor(Math.random() * 3 * columnTextNum));
+        nextChars = nextChars.concat(extendedNextChars);
+    }else{
+        nextChars = nextChars.slice(0, columnNum);
+    }
 }
 
 // Draw
@@ -94,7 +103,7 @@ function draw(){
 
 
 window.addEventListener('resize', () => {
-    debounce(layout, 200)();
+    debounce(layout, 100)();
 })
 
 draw();
