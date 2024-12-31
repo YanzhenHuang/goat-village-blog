@@ -11,6 +11,7 @@ body {
 }
 
 nav {
+    position: relative;
     display: flex;
     color: white;
     position: relative;
@@ -18,14 +19,135 @@ nav {
     border-bottom: solid 0.5px rgba(255,255,255,0.3);
 
     align-items: center;
-    justify-content: start;
-    padding-left: 5px;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+nav .hamburgerBtn {
+    display: none;
+}
+
+nav .hamburgerBtn .hamburgerBtnStrike {
+    width: 30px;
+    height: 2px;
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+nav .hamburgerBtn .hamburgerBtnStrike.strike1.toggled {
+    transform: translate(0, 7px) rotate(45deg) ;
+}
+
+nav .hamburgerBtn .hamburgerBtnStrike.strike2.toggled {
+    opacity: 0%;
+}
+
+nav .hamburgerBtn .hamburgerBtnStrike.strike3.toggled {
+    transform: translate(0, -7px) rotate(-45deg) ;
+}
+
+nav .navList ul {
+    display: flex;
+    list-style: none;
+}
+
+nav .navList ul li {
+    /* width: 40px; */
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    height: 40px;
+    padding-top: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0);
+    transition: all 0.2s ease-in-out;
+}
+
+nav .navList ul li:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+nav .navList ul li a {
+    color: white;
+    text-decoration: none;
 }
 
 @media screen and (max-width: 600px) {
     nav {
         justify-content: center;
-        padding-left: none;
+    }
+
+    nav .logo {
+        display: block;
+        margin: 0 auto;
+    }
+
+    nav .hamburgerBtn {
+        position: absolute;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 100%;
+        /* background-color: red; */
+        gap: 5px;
+        background-color: rgba(255,255,255,0);
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    nav .hamburgerBtn:hover{
+        cursor: pointer;
+        background-color: rgba(255,255,255,0.15);
+    }
+
+    nav .navList {
+        position: absolute;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 375px;
+        top: 60px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 1);
+        border-top: solid 0.5px rgba(255, 255, 255, 0.3);
+        border-bottom: solid 0.5px rgba(255, 255, 255, 0.3);
+        transition: all 0.2s ease-in-out;
+    }
+
+    nav .navList.hiddenWhenNarrow {
+        height: 0;
+    }
+
+    nav .navList ul {
+        display: flex;
+        align-items: stretch;
+        margin: 0;
+        flex-direction: column;
+        list-style: none;
+        padding-left: 0;
+        text-align: center;
+    }
+    
+    nav .navList ul li {
+        height: 50px;
+        padding-top: 25px;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        background-color: rgba(255, 255, 255, 0);
+        transition: all 0.2s ease-in-out;
+    }
+
+    nav .navList ul li:hover {
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.2);
     }
 }
 
@@ -36,7 +158,12 @@ nav .logo{
 
 #bg {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
+    opacity: 0.5;
 }
 
 h1, p {
